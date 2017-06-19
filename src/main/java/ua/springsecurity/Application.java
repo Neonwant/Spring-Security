@@ -12,10 +12,4 @@ public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
     }
-
-    @RequestMapping("/hello")
-    public String showHelloWorld() {
-        return "hello-world";
-    }
-
 }
