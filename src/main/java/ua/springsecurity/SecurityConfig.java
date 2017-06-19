@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sun.security.util.Password;
 import ua.springsecurity.services.UserService;
 
@@ -24,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin().permitAll()
             .and()
-            .logout().permitAll();
+            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
     }
 
     @Autowired
