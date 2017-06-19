@@ -1,4 +1,4 @@
-package ua.springsecurity.web;
+package ua.springsecurity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
