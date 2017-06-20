@@ -20,6 +20,7 @@ public class MainController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
+
         model.addAttribute("username", user.getUsername());
         model.addAttribute("roles", user.getAuthorities().stream().map(Role::getAuthority).collect(joining(",")));
         return "index";
