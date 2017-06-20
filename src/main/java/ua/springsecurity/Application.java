@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
 public class Application {
     public static void main(String[] args) throws Exception {
-
         SpringApplication.run(Application.class, args);
         System.out.println(new BCryptPasswordEncoder().encode("password"));
     }
