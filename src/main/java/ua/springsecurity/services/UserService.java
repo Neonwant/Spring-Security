@@ -21,15 +21,15 @@ public class UserService implements UserDetailsService {
     @PostConstruct
     public void init() {
 
-        userDao.findByUserName("user").ifPresent(user -> {
-            user.setPassword(new BCryptPasswordEncoder().encode("password"));
-            userDao.save(user);
-        });
+//        userDao.findByUserName("user").ifPresent(user -> {
+//            //user.setPassword(new BCryptPasswordEncoder().encode("password"));
+//            userDao.save(user);
+//        });
 
 //        if (!userDao.findByUserName("user").isPresent()) {
 //            userDao.save(User.builder()
 //                .username("user")
-//                .password("password")
+//                .password(new BCryptPasswordEncoder().encode("password"))
 //                .authorities(ImmutableList.of(Role.USER))
 //                .accountNonExpired(true)
 //                .accountNonLocked(true)
@@ -38,6 +38,30 @@ public class UserService implements UserDetailsService {
 //                .build()
 //            );
 //        }
+        if (!userDao.findByUserName("admin").isPresent()) {
+            userDao.save(User.builder()
+                    .username("admin")
+                    .password(new BCryptPasswordEncoder().encode("admin"))
+                    .authorities(ImmutableList.of(Role.ADMIN))
+                    .accountNonExpired(true)
+                    .accountNonLocked(true)
+                    .credentialsNonExpired(true)
+                    .enabled(true)
+                    .build()
+            );
+        }
+        if (!userDao.findByUserName("power").isPresent()) {
+            userDao.save(User.builder()
+                    .username("power")
+                    .password(new BCryptPasswordEncoder().encode("power"))
+                    .authorities(ImmutableList.of(Role.POWER_USER))
+                    .accountNonExpired(true)
+                    .accountNonLocked(true)
+                    .credentialsNonExpired(true)
+                    .enabled(true)
+                    .build()
+            );
+        }
     }
 
     @Override
