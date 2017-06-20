@@ -20,14 +20,18 @@
                     <div class="panel-body">
 
 
-
-                        <#if logout>
-                            <div class="alert alert-info" role="alert">You've been logged out successfully.</div>
-                        </#if>
-                        <#if error>
-                            <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
-                        </#if>
-
+                        <form method="post">
+                        <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                            </div>
+                            <button type="submit" class="btn btn-default">Log in</button>
+                        </form>
                     </div>
                 </div>
             </div>
