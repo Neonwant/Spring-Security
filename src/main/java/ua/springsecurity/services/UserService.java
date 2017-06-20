@@ -38,30 +38,30 @@ public class UserService implements UserDetailsService {
 //                .build()
 //            );
 //        }
-        if (!userDao.findByUserName("admin").isPresent()) {
-            userDao.save(User.builder()
-                    .username("admin")
-                    .password(new BCryptPasswordEncoder().encode("admin"))
-                    .authorities(ImmutableList.of(Role.ADMIN))
-                    .accountNonExpired(true)
-                    .accountNonLocked(true)
-                    .credentialsNonExpired(true)
-                    .enabled(true)
-                    .build()
-            );
-        }
-        if (!userDao.findByUserName("power").isPresent()) {
-            userDao.save(User.builder()
-                    .username("power")
-                    .password(new BCryptPasswordEncoder().encode("power"))
-                    .authorities(ImmutableList.of(Role.POWER_USER))
-                    .accountNonExpired(true)
-                    .accountNonLocked(true)
-                    .credentialsNonExpired(true)
-                    .enabled(true)
-                    .build()
-            );
-        }
+//        if (!userDao.findByUserName("admin").isPresent()) {
+//            userDao.save(User.builder()
+//                    .username("admin")
+//                    .password(new BCryptPasswordEncoder().encode("admin"))
+//                    .authorities(ImmutableList.of(Role.ADMIN))
+//                    .accountNonExpired(true)
+//                    .accountNonLocked(true)
+//                    .credentialsNonExpired(true)
+//                    .enabled(true)
+//                    .build()
+//            );
+//        }
+//        if (!userDao.findByUserName("power").isPresent()) {
+//            userDao.save(User.builder()
+//                    .username("power")
+//                    .password(new BCryptPasswordEncoder().encode("power"))
+//                    .authorities(ImmutableList.of(Role.POWER_USER))
+//                    .accountNonExpired(true)
+//                    .accountNonLocked(true)
+//                    .credentialsNonExpired(true)
+//                    .enabled(true)
+//                    .build()
+//            );
+//        }
     }
 
     @Override

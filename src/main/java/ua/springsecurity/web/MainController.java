@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
     @RequestMapping("/")
-    public String getMainPage() {
+    public String getMainPage(Model model) {
+        model.addAttribute("username", "from model username");
+        model.addAttribute("roles", "from model roles");
         return "index";
     }
 
