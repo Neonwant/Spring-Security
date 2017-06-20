@@ -9,16 +9,24 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sun.security.util.Password;
 import ua.springsecurity.services.UserService;
+import ua.springsecurity.web.AdminAuthFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private AdminAuthFilter adminAuthFilter;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .addFilterBefore(adminAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
             .antMatchers("/readme.txt", "/css/*").permitAll()
             .anyRequest().authenticated()
@@ -27,9 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
     }
-
-    @Autowired
-    private UserService userService;
 
     @Bean
     public PasswordEncoder bcrpyptPasswordEncoder() {
