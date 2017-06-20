@@ -18,7 +18,12 @@
                     </div>
 
                     <div class="panel-body">
-
+                        <#if logout>
+                            <div class="alert alert-info" role="alert">You've been logged out successfully.</div>
+                        </#if>
+                        <#if error>
+                            <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
+                        </#if>
 
                         <form method="post">
                         <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden">
